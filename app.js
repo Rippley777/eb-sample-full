@@ -38,9 +38,11 @@ if (cluster.isMaster) {
     var snsTopic =  process.env.NEW_SIGNUP_TOPIC;
     var app = express();
 
-    app.set('view engine', 'ejs');
-    app.set('views', __dirname + '/views');
+    // app.set('view engine', 'ejs');
+    // app.set('views', __dirname + '/views');
     app.use(bodyParser.urlencoded({extended:false}));
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 
     app.get('/', function(req, res) {
         res.render('index', {
