@@ -43,7 +43,7 @@ if (cluster.isMaster) {
     // app.set('view engine', 'html');
     app.use(bodyParser.urlencoded({extended:false}));
     console.log('ddd', __dirname)
-    app.use(express.static(path.join('./client', 'build')));
+    app.use(express.static(path.join('./client', 'build', 'static')));
 
     app.get('/', (req, res) => {
         res.sendFile(path.resolve("./client/build", "index.html"));
