@@ -48,6 +48,10 @@ if (cluster.isMaster) {
         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
     });
     
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "client/build", "index.html"))
+    })
+    
     // app.get('/', function(req, res) {
     //     res.render('index', {
     //         static_path: 'static',
