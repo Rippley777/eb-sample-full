@@ -40,17 +40,18 @@ if (cluster.isMaster) {
 
     // app.set('view engine', 'ejs');
     // app.set('views', __dirname + '/views');
-    app.set('view engine', 'html');
+    // app.set('view engine', 'html');
     app.use(bodyParser.urlencoded({extended:false}));
-    app.use(express.static(path.join(__dirname, 'client', 'build')));
+    console.log('ddd', __dirname)
+    app.use(express.static(path.join('./client', 'build')));
 
     app.get('/', (req, res) => {
-        res.sendFile(path.resolve(__dirname , "client/build", "index.html"));
+        res.sendFile(path.resolve("./client/build", "index.html"));
     });
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.join("index.html"))
-    })
+    // app.get("*", (req, res) => {
+    //     res.sendFile(path.join("index.html"))
+    // })
     
     // app.get('/', function(req, res) {
     //     res.render('index', {
