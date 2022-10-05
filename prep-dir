@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf static/css
+rm -rf static/js
+rm -rf static/media
+
+cp -r client/build/static/css static/css
+cp -r client/build/static/js static/js
+cp -r client/build/static/media static/media
+echo "Hello bro"
