@@ -26,6 +26,8 @@ if (cluster.isMaster) {
     var AWS = require('aws-sdk');
     var express = require('express');
     var bodyParser = require('body-parser');
+    var path = require('path');
+
 
     AWS.config.region = process.env.REGION
 
