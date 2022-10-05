@@ -38,15 +38,21 @@ if (cluster.isMaster) {
     var snsTopic =  process.env.NEW_SIGNUP_TOPIC;
     var app = express();
 
-    // app.set('view engine', 'html');
+    // app.set('view engine', 'ejs');
     // app.set('views', __dirname + '/views');
+    app.set('view engine', 'html');
     app.use(bodyParser.urlencoded({extended:false}));
-    app.use(express.static(path.join(__dirname, 'static')));
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
 
+    app.get('/', (req, res) => {
+        res.sendFile(path.resolve(__dirname , "client/build", "index.html"));
+    });
 
-    app.get('/', function(req, res) {
-        res.sendFile(path.join(__dirname, 'static', 'index.html'));
-    }
+    app.get("*", (req, res) => {
+        res.sendFile(path.join("index.html"))
+    })
+    
+    // app.get('/', function(req, res) {
     //     res.render('index', {
     //         static_path: 'static',
     //         theme: process.env.THEME || 'flatly',
